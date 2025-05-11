@@ -2,29 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beautiful Image Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keyboard Calculator</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Explore the Gallery</h1>
-  <div class="gallery">
-    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg" alt="Nature 1">
-    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTIlImt261_nOm7N5YFWDAnkD_sb51oi730XgeY1HchBNC3BrDBNHnS2SFFBZOW" alt="Water 2">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8du72ADfGhma7LMnkEYEiQJUdCmLwDZUaZKncS3oY9n6rk_ddqBEtgw6PdR" alt="Forest 3">
-    <img src="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg" alt="City 4">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp-Vaekqys7it-lCFBuWEMnKUT1NWNcgirwj0Qk3lXrxcnbAqcaWYtn5szmPR7" alt="Mountain 5">
-    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRw1BurkZHM4KU2qZcioJL0HTBjHm9iQF9oAgLGXFSXuEUEDfGl5BS4MoLm43_V" alt="Sky 6">
-    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRMberOKcXT6fhkCx1YYRUgNTn1N2DLchpyVPhwjOB62I13EchehS6aYWdRF9m3" alt="Beach 7">
-    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQFBbQ8yqroeEW3ggovjZDe9XGoMHAC_UEA1VqsJiCYhViwBj1odCdFmdGHMaW_" alt="River 8">
-    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR1jBGxgtolJsNYkFSO1gRQua1QxRUZNeD1Khn1CGLp_HaQ5qiVSuKYYySlH4V8" alt="Desert 9">
-  </div>
+  <div class="calculator">
+    <input type="text" id="display" readonly />
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendValue('/')">/</button>
+      <button onclick="appendValue('*')">*</button>
+      <button onclick="deleteLast()">⌫</button>
 
-  <div id="overlay">
-    <span id="close">&times;</span>
-    <img id="overlay-img" src="" alt="Large View">
-    <button id="prev">&#10094;</button>
-    <button id="next">&#10095;</button>
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('-')">-</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('+')">+</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="calculate()">=</button>
+
+      <button onclick="appendValue('0')" class="zero">0</button>
+      <button onclick="appendValue('.')">.</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

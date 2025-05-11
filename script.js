@@ -1,32 +1,40 @@
-const images = document.querySelectorAll('.gallery img');
-const overlay = document.getElementById('overlay');
-const overlayImg = document.getElementById('overlay-img');
-const closeBtn = document.getElementById('close');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
+const display = document.getElementById('display');
 
-let currentIndex = 0;
-
-function openOverlay(index) {
-  currentIndex = index;
-  overlayImg.src = images[currentIndex].src;
-  overlay.style.display = 'flex';
+function appendValue(value) {
+  display.value += value;
 }
 
-images.forEach((img, index) => {
-  img.addEventListener('click', () => openOverlay(index));
-});
+function clearDisplay() {
+  display.value = '';
+}
 
-closeBtn.addEventListener('click', () => {
-  overlay.style.display = 'none';
-});
+function deleteLast() {
+  display.value = display.value.slice(0, -1);
+}
 
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  overlayImg.src = images[currentIndex].src;
-});
+function calculate() {
+  try {
+    if (display.value.includes("/0")) {
+      display.value = "Error";
+    } else {
+      display.value = eval(display.value);
+    }
+  } catch {
+    display.value = "Error";
+  }
+}
 
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % images.length;
-  overlayImg.src = images[currentIndex].src;
+// Handle keyboard input
+document.addEventListener('keydown', function (e) {
+  const key = e.key;
+
+  if (!isNaN(key) || "+-*/.".includes(key)) {
+    appendValue(key);
+  } else if (key === "Enter" || key === "=") {
+    calculate();
+  } else if (key === "Backspace") {
+    deleteLast();
+  } else if (key.toLowerCase() === "c" || key === "Escape") {
+    clearDisplay();
+  }
 });
